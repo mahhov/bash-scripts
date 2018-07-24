@@ -4,7 +4,7 @@ SIZE=300;
 dir=$(dirname "$0")
 
 if [ "$1" == kill ] ; then
-    pkill -9 -f "display $dir/temp.png"
+    pkill -9 -f "display $dir/display.png"
    
 else
     mouse=$(xdotool getmouselocation | tr ':' ' ')
@@ -26,7 +26,7 @@ else
     left=$(clip $((x-SIZE/2)) 0 $((width-SIZE)))
     top=$(clip $((y-SIZE/2)) 0 $((height-SIZE)))
 
-    import -window root -crop ${SIZE}x$SIZE+$left+$top -resize $ZOOM $dir/temp.png
-    display $dir/temp.png &
+    import -window root -crop ${SIZE}x$SIZE+$left+$top -resize $ZOOM $dir/display.png
+    display $dir/display.png &
 fi
 
