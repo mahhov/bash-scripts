@@ -1,3 +1,7 @@
+# ./magnify.sh
+# ./magnify.sh window
+# ./magnify.sh kill
+
 ZOOM=200% # can be percent (e.g. 200%) or width (e.g. 2000)
 SIZE=300;
 
@@ -5,7 +9,12 @@ dir=$(dirname "$0")
 
 if [ "$1" == kill ] ; then
     pkill -9 -f "display $dir/display.png"
-   
+
+elif [ "$1" == window ] ; then
+    window=$(xdotool getwindowfocus)
+    import -window $window -resize $ZOOM $dir/display.png
+    display $dir/display.png &
+    
 else
     mouse=$(xdotool getmouselocation | tr ':' ' ')
     screen=$(xdotool getdisplaygeometry)
