@@ -18,6 +18,7 @@ elif [ "$1" == diff ] ; then
         '(' $dir/base.png -flatten -grayscale Rec709Luminance ')' \
         '(' -clone 0-1 -compose darken -composite ')' \
         -channel RGB -combine $dir/display.png
+    montage -tile x3 -geometry +0+0 $dir/base.png $dir/temp.png $dir/display.png $dir/concat.png
     display $dir/display.png
 
 # kill
@@ -28,6 +29,7 @@ elif [ "$1" == kill ] ; then
 else
     import -window $window $dir/temp.png
     compare -highlight-color gray $dir/base.png $dir/temp.png $dir/display.png 
+    montage -tile x3 -geometry +0+0 $dir/base.png $dir/temp.png $dir/display.png $dir/concat.png
     display $dir/display.png
 fi
 
