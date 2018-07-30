@@ -2,8 +2,8 @@
 # ./magnify.sh window
 # ./magnify.sh kill
 
-ZOOM=200% # can be percent (e.g. 200%) or width (e.g. 2000)
-SIZE=300;
+ZOOM=100% # can be percent (e.g. 200%) or width (e.g. 2000)
+SIZE=600;
 
 dir=$(dirname "$0")
 
