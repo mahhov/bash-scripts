@@ -59,6 +59,10 @@ This serves 2 purposes:
 
 ![screenshot with transformation 2](./screenshots/run-transformed-2.png)
 
+## buildAndRun.sh
+
+does equivelent of `build.sh`, and, if successfull, then `run.sh`.
+
 ## terminal
 
 these scripts work fine in terminal as well. If you're primary use case is the terminal, you may want to modify `translatePaths.js` to output terminal-compatible links instead of ide-compatible links. Whereas ide's desire `/absolute/path/src/my_c_file.c:line#`, 
