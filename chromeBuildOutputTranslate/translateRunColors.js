@@ -24,6 +24,8 @@ const rl = readline.createInterface({
 
 rl.on('line', line => {
   line = line.replace(/^\[\d+:\d+:\d+\/\d+\.\d+:.*$/g, () => ``);
+  if (!line)
+    return;
   Object.entries(COLORS).forEach(([key, code]) =>
       line = line.replace(new RegExp(`^${key}\\b(.*)$`, 'g'), line => `${code}${line}${NORMAL}`));
   console.log(line);
