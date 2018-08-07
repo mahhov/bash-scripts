@@ -37,7 +37,7 @@ Result ReadDevInput::get(std::string key) {
   return get(key, 0);
 }
 
-Result ReadDevInput::get(std::string key, int index) {
+Result ReadDevInput::get(std::string key, size_t index) {
   return index < read[key].size() ? read[key][index] : Result();
 }
 

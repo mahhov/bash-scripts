@@ -17,7 +17,7 @@ class BASE_EXPORT ReadDevInput {
 
   Result get(std::string key);
 
-  Result get(std::string key, int index);
+  Result get(std::string key, size_t index);
 
   std::vector<Result> getList(std::string key);
 
