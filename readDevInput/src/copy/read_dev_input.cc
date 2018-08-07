@@ -24,7 +24,7 @@ ReadDevInput::ReadDevInput(std::string fileName) : read() {
     if (!(iss >> key))
       continue;
     while (iss >> word)
-      results.push_back(Result(word));
+      results.emplace_back(word);
     read.insert(std::make_pair(key, results));
   }
 
