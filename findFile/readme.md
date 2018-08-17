@@ -1,8 +1,8 @@
 # what's it do?
 
-fuzy search file names
+fuzzy search paths & files names
 
-e.g. `yellow` could match with
+e.g. `yellow` would match with
 
 `yellowBook.txt`
 
@@ -22,33 +22,44 @@ etc.
     ```
     . /usr/local/.../findFile/findFile.sh
     ```
-
-1. optionally disable aliases
-
-    on lines 29 & 30 of `findFile.sh`, u'll notice convenience aliases `ff` for `findFile2` and `cf` for `chromeFind`. disable or modify these as preferred.
-
 1. chrome path
 
-    modify the variable `chromeSrc` in `findFile.sh` (line 25) to your actual path
+    modify the variable `chromeSrc` in `findFile.sh` (line 1) to your actual path
 
 ### usage
 
+`findFile <optional search dir> <search text>` (alias `ff`)
+
+`chromeFind <search text>` (alias `cf`)
+
+### examples
+
 in ur terminal
 
-`findFile2 myFuzzyFileName.txt` will search for `myFuzzyFileName.txt` in ur current dir
+`ff myFuzzyFileName.txt` will search for `myFuzzyFileName.txt` in ur current dir
 
-`findFile2 mfinam` will search for `mfinam` which will match `myFuzzyFileName.txt` if such a file exists
+`ff mfinam` will search for `mfinam` which will match `myFuzzyFileName.txt` if such a file exists
 
-`findFile2 myDir mfinam` will search for `mfinam` in `myDir`
+`ff myDir mfinam` will search for `mfinam` in `myDir`
 
-`chromeFind shortProvh` will search for `shortProvh` in your chrome dir
+`cf shortProvh` will search for `shortProvh` in your chrome dir
 
 ```sh
-> chromeFind shortProvh
+> cf shortProvh
 components/omnibox/browser/shortcuts_provider.h
 components/omnibox/browser/shortcuts_provider_test_util.h
 chrome/browser/ui/app_list/search/arc/arc_app_shortcuts_search_provider.h
 chrome/browser/ui/app_list/search/settings_shortcut/settings_shortcut_provider.h
 ```
 
+### screenshot
+
 ![screenshot](./screenshots/screenshot.png)
+
+![screenshot2](./screenshots/screenshot2.png)
+
+### links
+
+ctrl + click on output to open file in the default application for that file type
+
+some terminals won't support this, but most should
