@@ -1,15 +1,3 @@
-#!/usr/bin/env node
-
-const filterText = process.argv[2];
-
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false
-});
-
 class Filterer {
   static filterText(text, filterText) {
     return Filterer.filterWords(Filterer.textToWords(text), filterText);
@@ -36,7 +24,4 @@ class Filterer {
   }
 }
 
-rl.on('line', line => {
-  if (Filterer.filterText(line, filterText))
-    console.log(line);
-});
+module.exports = Filterer;
