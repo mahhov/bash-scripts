@@ -18,7 +18,7 @@ e.g. `yellow` would match with
 
 etc.
 
-### setup
+# setup
 
 1. sourcing
 
@@ -30,13 +30,13 @@ etc.
 
     modify the variable `chromeSrc` in `findFile.sh` (line 1) to your actual path
 
-### usage
+# usage
 
 `findFile <optional search dir> <search text>` (alias `ff`)
 
 `chromeFind <search text>` (alias `cf`)
 
-### examples
+# examples
 
 in ur terminal
 
@@ -56,13 +56,13 @@ chrome/browser/ui/app_list/search/arc/arc_app_shortcuts_search_provider.h
 chrome/browser/ui/app_list/search/settings_shortcut/settings_shortcut_provider.h
 ```
 
-### screenshot
+# screenshot
 
 ![screenshot](./screenshots/screenshot.png)
 
 ![screenshot2](./screenshots/screenshot2.png)
 
-### links
+# links
 
 ctrl + click on output to open file in the default application for that file type
 
