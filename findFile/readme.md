@@ -1,3 +1,7 @@
+# gif
+
+![gif](./screenshots/gif.gif)
+
 # what's it do?
 
 fuzzy search paths & files names
