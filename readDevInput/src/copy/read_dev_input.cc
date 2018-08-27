@@ -65,7 +65,7 @@ std::string Result::get() {
 
 int Result::getInt() {
   return found ? std::stoi(value) : 0;
-  // safe cast by checking if is int todo https://stackoverflow.com/questions/2844817/how-do-i-check-if-a-c-string-is-an-int
+  // todo safe cast by checking if is int todo https://stackoverflow.com/questions/2844817/how-do-i-check-if-a-c-string-is-an-int
 }
 
 bool Result::getBool() {
