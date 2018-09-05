@@ -1,0 +1,15 @@
+{
+  "name": "snippet-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gen.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bs-better-stream": "^1.5.0"
+  }
+}
