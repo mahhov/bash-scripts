@@ -38,7 +38,7 @@ wip:
 
 ![cliExampleGif](./screenshots/cliExample.gif)
 
-![cliExample](./screenshots/cliExmaple.png)
+![cliExample](./screenshots/cliExample.png)
 
 ## interactive usage, `gen.js`
 
@@ -92,11 +92,11 @@ in progress:
 
 ![interactiveExampleGif](./screenshots/interactiveExample.gif)
 
-![interactiveExample1](./screenshots/interactiveExmaple1.png)
+![interactiveExample1](./screenshots/interactiveExample1.png)
 
-![interactiveExample2](./screenshots/interactiveExmaple2.png)
+![interactiveExample2](./screenshots/interactiveExample2.png)
 
-![interactiveExample3](./screenshots/interactiveExmaple3.png)
+![interactiveExample3](./screenshots/interactiveExample3.png)
 
 ## note for non-linux use
 
