@@ -4,6 +4,8 @@ overlays 2 images and highlight differences.
 
 ## examples
 
+![gif](./screenshots/imageCompare.gif)
+
 top images r base images, middle images r the comparison images, and the bottom images r the overlays
 
 ![screenshot1](./screenshots/1.png)
@@ -15,8 +17,6 @@ top images r base images, middle images r the comparison images, and the bottom 
 ![screenshot4](./screenshots/4.png)
 
 ![screenshot5](./screenshots/5.png)
-
-![gif](./screenshots/imageCompare.gif)
 
 ## image names
 
