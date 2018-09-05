@@ -1,4 +1,4 @@
-#Image Compare
+# Image Compare
 
 overlays 2 images and highlight differences.
 
