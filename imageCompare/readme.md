@@ -34,9 +34,9 @@ the script creates 4 `png` files named:
 
 - `compareImages.sh base` captures base image from current focused window
 
-- `compareImages.sh` 1. captures comparison image, 2. compares captured comparison image with last captured base image to generate overlay image, 3. and displays overlay image
+- `compareImages.sh` 1. captures comparison image, 2. compares captured comparison image with last captured base image to generate overlay image, 3. and displays overlay image. see the last screenshot for an example.
 
-- `compareImages.sh diff` same as above, but uses green & red  to highlight removals & additions respectively
+- `compareImages.sh diff` same as above, but uses green & red  to highlight removals & additions respectively. see the first 4 screenshots for examples.
 
 - `compareImages.sh kill` kills all opened displays. useful when u find urself with 10+ overlay images open
 
@@ -50,4 +50,4 @@ i've found the following keyboard shortcuts useful:
 
 - `window + 3` to `path/imageCompare/compareImages.sh diff`
 
-- `window + \`` to `path/imageCompare/compareImages.sh kill`
+- ``window + ` `` to `path/imageCompare/compareImages.sh kill`
