@@ -9,7 +9,7 @@ window=$(xdotool getwindowfocus)
 # base
 if [ "$1" == base ] ; then
     import -window $window $dir/base.png
-    
+
 # diff
 elif [ "$1" == diff ] ; then
     import -window $window $dir/temp.png
@@ -23,13 +23,12 @@ elif [ "$1" == diff ] ; then
 
 # kill
 elif [ "$1" == kill ] ; then
-    pkill -9 -f "display $dir/display.png"
+    pkill -9 -f 'display.*/display.png'
 
 # compare
 else
     import -window $window $dir/temp.png
-    compare -highlight-color gray $dir/base.png $dir/temp.png $dir/display.png 
+    compare -highlight-color gray $dir/base.png $dir/temp.png $dir/display.png
     montage -tile x3 -geometry +0+0 $dir/base.png $dir/temp.png $dir/display.png $dir/concat.png
     display $dir/display.png
 fi
-
