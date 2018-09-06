@@ -2,16 +2,23 @@
 # `./compareImages` will compare current window image with base window image
 # `./compareImages diff` will diff (green / red) current window image with base window image
 # `./compareImages kill` will kill all open comparisons
+# adding `manual` before any command (e.g. `./compareImage manual base`) will allow u to manually select the window instead of automatically picking the focused window
 
 dir=$(dirname "$0")
-window=$(xdotool getwindowfocus)
+if [ "$1" == select ] ; then
+  window=$(xdotool selectwindow)
+  command=$2
+else
+  window=$(xdotool getwindowfocus)
+  command=$1
+fi
 
 # base
-if [ "$1" == base ] ; then
+if [ $command == base ] ; then
     import -window $window $dir/base.png
 
 # diff
-elif [ "$1" == diff ] ; then
+elif [ $command == diff ] ; then
     import -window $window $dir/temp.png
     convert \
         '(' $dir/temp.png -flatten -grayscale Rec709Luminance ')' \
@@ -22,7 +29,7 @@ elif [ "$1" == diff ] ; then
     display $dir/display.png
 
 # kill
-elif [ "$1" == kill ] ; then
+elif [ $command == kill ] ; then
     pkill -9 -f 'display.*/display.png'
 
 # compare

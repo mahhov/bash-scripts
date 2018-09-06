@@ -46,6 +46,8 @@ the script can create 4 `png` files named:
 
 - `compareImages.sh kill` kills all opened displays. useful when u find urself with 10+ overlay images open
 
+- adding `select` as the first argument (e.g. `compareImages.sh select base`) will allow u to select the window to capture instead of automatically using the focused window, particularly useful for running from command line.
+
 ## useful bindings
 
 i've found the following keyboard shortcuts useful:
@@ -57,3 +59,7 @@ i've found the following keyboard shortcuts useful:
 - `window + 3` to `path/imageCompare/compareImages.sh diff`
 
 - ``window + ` `` to `path/imageCompare/compareImages.sh kill`
+
+## non-linux
+
+the script builds upon the `MagickImage` command line tools, which are cross platform but may require some installation on other os's.
