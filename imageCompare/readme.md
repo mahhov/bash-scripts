@@ -64,7 +64,7 @@ the script can create 4 `png` files named:
 
 i've found the following keyboard shortcuts useful:
 
-- `window + 1` to `path/imageCompare/compareImages.sh diff`
+- `window + 1` to `path/imageCompare/compareImages.sh base`
 
 - `window + 2` to `path/imageCompare/compareImages.sh`
 
