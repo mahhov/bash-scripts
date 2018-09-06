@@ -4,6 +4,8 @@ overlays 2 images and highlights differences.
 
 ## examples
 
+### green / red highlights
+
 ![gif 1](./screenshots/imageCompare1.gif)
 
 ![gif 2](./screenshots/imageCompare2.gif)
@@ -12,7 +14,17 @@ overlays 2 images and highlights differences.
 
 ![gif 4](./screenshots/imageCompare4.gif)
 
+### gray highlights
+
+`comareImage.sh`
+
 ![gif 5](./screenshots/imageCompare5.gif)
+
+### command line
+
+![gif cli](./screenshots/imageCompareCli.gif)
+
+# screenshots
 
 ![screenshot1](./screenshots/1.png)
 
