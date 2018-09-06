@@ -1,12 +1,18 @@
 # Image Compare
 
-overlays 2 images and highlight differences.
+overlays 2 images and highlights differences.
 
 ## examples
 
-![gif](./screenshots/imageCompare.gif)
+![gif 1](./screenshots/imageCompare1.gif)
 
-top images r base images, middle images r the comparison images, and the bottom images r the overlays
+![gif 2](./screenshots/imageCompare2.gif)
+
+![gif 3](./screenshots/imageCompare3.gif)
+
+![gif 4](./screenshots/imageCompare4.gif)
+
+![gif 5](./screenshots/imageCompare5.gif)
 
 ![screenshot1](./screenshots/1.png)
 
@@ -20,7 +26,7 @@ top images r base images, middle images r the comparison images, and the bottom 
 
 ## image names
 
-the script creates 4 `png` files named:
+the script can create 4 `png` files named:
 
 - `base.png`, base image
 
@@ -28,15 +34,15 @@ the script creates 4 `png` files named:
 
 - `display.png`, overlay image
 
-- `concat.png`, the 3 above concatenated as in the screenshots
+- `concat.png`, the 3 above concatenated as in the screenshots above
 
 ## commands
 
-- `compareImages.sh base` captures base image from current focused window
+- `compareImages.sh base` captures base image from currently focused window
 
-- `compareImages.sh` 1. captures comparison image, 2. compares captured comparison image with last captured base image to generate overlay image, 3. and displays overlay image. see the last screenshot for an example.
+- `compareImages.sh` 1. captures comparison image from currently focused window, 2. compares captured comparison image with last captured base image to generate the overlay image, 3. and displays the overlay image.
 
-- `compareImages.sh diff` same as above, but uses green & red  to highlight removals & additions respectively. see the first 4 screenshots for examples.
+- `compareImages.sh diff` same as above, but uses green & red to highlight removals & additions respectively. see the first 4 screenshots for examples.
 
 - `compareImages.sh kill` kills all opened displays. useful when u find urself with 10+ overlay images open
 
