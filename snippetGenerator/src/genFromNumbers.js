@@ -17,9 +17,13 @@ function* makeEnum() {
 
 const [HEADER, NUMBER, CUSTOM_NUMBER, ISSUE] = makeEnum();
 
-let getTitle = async (issueNumber) =>
-  (await axios.get(`https://bugs.chromium.org/p/chromium/issues/detail?id=${issueNumber}`))
-    .data.match(/<span class="h3".*>(.*)<\/span>/)[1];
+let getTitle = async (issueNumber) => {
+  let response = (await axios.get(`https://bugs.chromium.org/p/chromium/issues/detail?id=${issueNumber}`)).data;
+  if (!response.includes('<title>Sign in - Google Accounts</title>'))
+    return response.match(/<span class="h3".*>(.*)<\/span>/)[1];
+  console.log(`-- unable to fetch title for issue ${issueNumber}, missing authentication, it may be a 'Restricted' issue, try setting a cookie --`);
+  return issueNumber
+};
 
 let isHeader = word => /^@/.test(word);
 let isNumber = word => /^\d+$/.test(word);
