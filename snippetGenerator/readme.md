@@ -1,12 +1,16 @@
 # snippet generator
 
-## cli usage, `genFromNumbers.js`
+## overview
 
-The `genFromNumbers` script is quicker to use.
+- The `genFromNumbers` script is quicker to use.
+
+- The `gen` script allows for more customizable snippets and remembering the input from previous use.
+
+## cli usage, `genFromNumbers.js`
 
 ### example
 
-`./genFromNumbers.js @merged 75715 @wip '866191 dis iz important'  865611 'other important stuff'`
+`./genFromNumbers.js @merged 75715 @wip '866191 dis iz important' 865611 'other important stuff'`
 
 will produce the following output and set your clipboard:
 
@@ -41,8 +45,6 @@ wip:
 ![cliExample](./screenshots/cliExample.png)
 
 ## interactive usage, `gen.js`
-
-The `gen` script allows for more customizable snippets and remembering the input from previous use.
 
 ### example
 
@@ -100,4 +102,14 @@ in progress:
 
 ## note for non-linux use
 
-by default, the scripts use `xclip` for setting the clipboard, and `gedit` for prompting for text input (`gen.js` only, not requird for `genFromNumbers.js`). these should be customized to ur preferred text editor / clipboard server for other os's; see the `setClipboard` and `writeUserFile` functions in the src.
+by default, the scripts use `xclip` for setting the clipboard, and `gedit` for prompting for text input (`gen.js` only). These should be customized to ur preferred text editor / clipboard server for other os's; see the `setClipboard` and `writeUserFile` functions in the src.
+
+## note for `restricted` issues
+
+some monorail issues r restricted and require authentication to view and fetch titles from. By default, they will simply display their issue number as their title, e.g. `[#632215](https://crbug.com/632215): 632215`, as well as console a warning `-- unable to fetch title for issue 632215, missing authentication, it may be a 'Restricted' issue, try setting a cookie --`. to work around this issue, you may create a `headers.json` file in this directory (1 level up from `src`) containing something like
+```
+{
+    "Cookie": "SACSID=~AJKiY...iAXgk"
+}
+```
+this can be fetched from your browser developer console

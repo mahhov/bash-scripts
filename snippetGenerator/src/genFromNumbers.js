@@ -6,6 +6,15 @@ const childProcess = require('child_process');
 const Stream = require('bs-better-stream');
 const inputWords = process.argv.splice(2);
 
+const headers = {};
+try {
+  headers = require('../headers.json');
+  console.log('headers loaded');
+} catch (e) {
+  console.log('no headers loaded');
+}
+console.log(headers)
+
 const setClipboard = contents =>
   childProcess.execSync(`echo '${contents}' | xclip -selection c -l 1`);
 
@@ -18,7 +27,7 @@ function* makeEnum() {
 const [HEADER, NUMBER, CUSTOM_NUMBER, ISSUE] = makeEnum();
 
 let getTitle = async (issueNumber) => {
-  let response = (await axios.get(`https://bugs.chromium.org/p/chromium/issues/detail?id=${issueNumber}`)).data;
+  let response = (await axios.get(`https://bugs.chromium.org/p/chromium/issues/detail?id=${issueNumber}`, headers)).data;
   if (!response.includes('<title>Sign in - Google Accounts</title>'))
     return response.match(/<span class="h3".*>(.*)<\/span>/)[1];
   console.log(`-- unable to fetch title for issue ${issueNumber}, missing authentication, it may be a 'Restricted' issue, try setting a cookie --`);
