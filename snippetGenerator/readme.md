@@ -1,5 +1,7 @@
 # snippet generator
 
+helps create markdown links and fetch crbug titles
+
 ## overview
 
 - The `genFromNumbers` script is quicker to use.
