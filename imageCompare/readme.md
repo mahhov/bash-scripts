@@ -36,6 +36,8 @@ overlays 2 images and highlights differences.
 
 ![screenshot5](./screenshots/5.png)
 
+![screenshot6](./screenshots/6.png)
+
 ## image names
 
 the script can create 4 `png` files named:
