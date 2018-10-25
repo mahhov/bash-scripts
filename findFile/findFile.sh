@@ -6,10 +6,10 @@ findFile() {
         echo usage: [optional searchDir] [searchText]
         return;
     elif [ -z "$2" ]; then
-        dir=.
+        dir=`pwd`
         filter=$1
     else
-        dir=$1
+        dir=`pwd`/$1
         filter=$2
     fi
     echo "searching for ($filter) in ($dir)"
