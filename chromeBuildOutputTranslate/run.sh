@@ -10,4 +10,3 @@ status=${PIPESTATUS[0]}
 popd
 
 exit $status
-

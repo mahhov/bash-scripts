@@ -22,8 +22,4 @@ rl.on('line', line => {
         .replace(/^.*\berror\b.*$/g, line => `${bRed}${line}${normal}`)
         ;
     console.log(out);
-})
-
-// ../../components/omnibox/browser/autocomplete_input.h:239:33:
-// usr/local/google/home/manukh/workspace/readFile/main.cpp:7:
-
+});
