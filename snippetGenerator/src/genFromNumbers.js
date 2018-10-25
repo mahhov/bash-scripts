@@ -6,14 +6,13 @@ const childProcess = require('child_process');
 const Stream = require('bs-better-stream');
 const inputWords = process.argv.splice(2);
 
-const headers = {};
+let headers = {};
 try {
   headers = require('../headers.json');
   console.log('headers loaded');
 } catch (e) {
   console.log('no headers loaded');
 }
-console.log(headers)
 
 const setClipboard = contents =>
   childProcess.execSync(`echo '${contents}' | xclip -selection c -l 1`);
@@ -24,9 +23,9 @@ function* makeEnum() {
     yield i++;
 }
 
-const [HEADER, NUMBER, CUSTOM_NUMBER, ISSUE] = makeEnum();
+const [HEADER, ISSUE, CUSTOM_ISSUE, REVIEW, CUSTOM_REVIEW, CUSTOM] = makeEnum();
 
-let getTitle = async (issueNumber) => {
+let getIssueTitle = async (issueNumber) => {
   let response = (await axios.get(`https://bugs.chromium.org/p/chromium/issues/detail?id=${issueNumber}`, headers)).data;
   if (!response.includes('<title>Sign in - Google Accounts</title>'))
     return response.match(/<span class="h3".*>(.*)<\/span>/)[1];
@@ -34,35 +33,56 @@ let getTitle = async (issueNumber) => {
   return issueNumber
 };
 
+let getReviewTitle = async (reviewNumber) => {
+  let response = (await axios.get(`https://chromium-review.googlesource.com/changes/chromium%2Fsrc~${reviewNumber}/detail`)).data;
+  let json = JSON.parse(response.substring(")]}'".length));
+  return json.subject;
+};
+
 let isHeader = word => /^@/.test(word);
-let isNumber = word => /^\d+$/.test(word);
-let isCustomNumber = word => /^\d+ /.test(word);
+let isIssue = word => /^\d+$/.test(word);
+let isCustomIssue = word => /^\d+ /.test(word);
+let isReview = word => /^r\d+$/.test(word);
+let isCustomReview = word => /^r\d+ /.test(word);
 
 let createHeader = header => ({type: HEADER, header: header.slice(1)});
-let createNumber = number => ({type: NUMBER, number, title: getTitle(number)});
-let createCustomNumber = numberAndTitle => {
+let createIssue = number => ({type: ISSUE, number, title: getIssueTitle(number)});
+let createCustomIssue = numberAndTitle => {
   let [, number, title] = numberAndTitle.match(/^(\d{6}) ([\s\S]*)/);
-  return {type: CUSTOM_NUMBER, number, title};
+  return {type: CUSTOM_ISSUE, number, title};
 };
-let createIssue = title => ({type: ISSUE, title});
+let createReview = number => {
+  number = number.substring(1);
+  return {type: REVIEW, number, title: getReviewTitle(number)};
+};
+let createCustomReview = numberAndTitle => {
+  let [, number, title] = numberAndTitle.match(/^r(\d{7}) ([\s\S]*)/);
+  return {type: CUSTOM_REVIEW, number, title};
+};
+let createCustom = title => ({type: CUSTOM, title});
 
 let formatHeader = ({header}) => `${header}:`;
-let formatNumber = ({number, title}) => `- Issue [#${number}](https://crbug.com/${number}): ${title}`;
-let formatIssue = ({title}) => `- ${title}`;
+let formatIssue = ({number, title}) => `- Issue [#${number}](https://crbug.com/${number}): ${title}`;
+let formatReview = ({number, title}) => `- Review [#${number}](https://chromium-review.googlesource.com/c/chromium/src/+/${number}): ${title}`;
+let formatCustom = ({title}) => `- ${title}`;
 
 Stream()
   .write(...inputWords)
   .branchMap(
     isHeader, createHeader,
-    isNumber, createNumber,
-    isCustomNumber, createCustomNumber,
-    createIssue)
+    isIssue, createIssue,
+    isCustomIssue, createCustomIssue,
+    isReview, createReview,
+    isCustomReview, createCustomReview,
+    createCustom)
   .waitOnOrdered('title')
   .switchMap(line => line.type,
     HEADER, formatHeader,
-    NUMBER, formatNumber,
-    CUSTOM_NUMBER, formatNumber,
-    ISSUE, formatIssue)
+    ISSUE, formatIssue,
+    CUSTOM_ISSUE, formatIssue,
+    REVIEW, formatReview,
+    CUSTOM_REVIEW, formatReview,
+    CUSTOM, formatCustom)
   .batch(inputWords.length)
   .map(lines => lines.reduce((a, b) => `${a}\n\n${b}`, ''))
   .each(a => console.log(a))

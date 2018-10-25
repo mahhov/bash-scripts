@@ -5,12 +5,17 @@ const childProcess = require('child_process');
 const fs = require('fs');
 const axios = require('axios');
 
+let safe = promise => promise.catch(e => console.log(e));
+
 const writeUserFile = file =>
   childProcess.exec(`gedit ${file}`);
 
 const waitForInput = () =>
   new Promise(resolve =>
-    process.stdin.once('data', resolve));
+    process.stdin.once('data', () => {
+      resolve();
+      process.stdin.pause();
+    }));
 
 const readUserFile = file =>
   fs.readFileSync(file, 'utf8');
@@ -44,7 +49,6 @@ const main = async () => {
   console.log(output);
   setClipboard(output);
   console.log('-- copied to clipboard --');
-  process.exit(1);
 };
 
 main();

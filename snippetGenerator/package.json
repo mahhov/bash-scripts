@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "bs-better-stream": "^1.5.0"
+    "bs-better-stream": "^1.8.5"
   }
 }

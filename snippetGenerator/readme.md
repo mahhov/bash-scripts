@@ -12,7 +12,7 @@ helps create markdown links and fetch crbug titles
 
 ### example
 
-`./genFromNumbers.js @merged 75715 @wip '866191 dis iz important' 865611 'other important stuff'`
+`./genFromNumbers.js @merged 75715 @wip '866191 dis iz important' 865611 'other important stuff' '@in review' r1281164`
 
 will produce the following output and set your clipboard:
 
@@ -28,17 +28,25 @@ wip:
 - Issue [#865611](https://crbug.com/865611): raised omnibox should not be displayed in popup windows
 
 - other important stuff
+
+in review:
+
+- Review [#1281164](https://chromium-review.googlesource.com/c/chromium/src/+/1281164): [chrome:omnibox] Extract each Custom Element to individual JS file.
 ```
 
 ### details
 
-- maps `@my header` to `my header:`
+- maps `@<header message>` to `<header message>:`
 
-- maps `0123` to `- Issue [#0123](https://crbug.com/0123): <title fetched from monorail>`
+- maps `<number>` to `- Issue [#<number>](https://crbug.com/<number>): <title fetched from monorail>`
 
-- maps `0123 custom message` to `- Issue [#0123](https://crbug.com/0123): custom message`
+- maps `<number> <custom message>` to `- Issue [#<number>](https://crbug.com/<number>): <custom message>`
 
-- maps `custom message` to `- custom message`
+- maps `r<number>` to `- Review [#<number>](https://chromium-review.googlesource.com/c/chromium/src/+/<number>): <title fetched from chromium-review>`
+
+- maps `r<number> <custom message>` to `- Review [#<number>](https://chromium-review.googlesource.com/c/chromium/src/+/<number>): <custom message>`
+
+- maps `<custom message>` to `- <custom message>`
 
 ### screenshots
 

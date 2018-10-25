@@ -1,3 +1,13 @@
-Merged:
+merged:
 
-- [830491] fixed an issue that was blocking [830491] '!...'
+- [CL 1257546](https://chromium-review.googlesource.com/c/chromium/src/+/1257546) chrome:omnibox: create OmniboxInputs and OmniboxOutput custom html elements to encapsulate interaction with the dom.
+
+merged:
+
+- [chrome:omnibox] Make boolean indicators copy-able. (https://chromium-review.googlesource.com/c/chromium/src/+/1271359)
+
+- [chrome:omnibox]: create OmniboxInputs and OmniboxOutput custom HTML elements to encapsulate interaction with the DOM. (https://chromium-review.googlesource.com/c/chromium/src/+/1257546)
+
+WIP:
+
+- [chrome:omnibox] Create classes to generate output HTML from HTML templates. (https://chromium-review.googlesource.com/c/chromium/src/+/1279149)
