@@ -14,16 +14,21 @@ help visualize git rebases
 
     ![git-rst-screenshot](./screenshots/screenshot-git-rebase.png)
 
-1. easier to type than a custom git log command 
+1. easier to type than a custom git log command
 
     `git log --pretty=oneline --abbrev-commit 2533b52^..9a7279b`
-    
 
-## api
+## setup
+
+save and source the script
+
+e.g., if ur using `bash`, add `. <save path>/git-r.sh` to ur `.bashrc` file
+
+## commands
 
 ### `git-rst` or `git-rebase-status`
 
-prints the commit being applied in the format `<commit sha> <commit message>` 
+prints the commit being applied in the format `<commit sha> <commit message>`
 
 ```bash
 → git-rst
@@ -41,13 +46,13 @@ prints the commits from the rebase base commit (the commit ur rebasing onto) to 
 → git rebase base
 ...
 
-→ git-rlog 
+→ git-rlog
 c9701c008649 include ultraviolet colors
 9a30ef4674f5 make them brighter
-caf94b018fa2 paint the rainbows
+caf94b018fa2 paint the rainbows < this line will be highlighted
 ```
 
-   
+
 ### `git-rcont` or `git-rebase-continue`
 
 adds unstaged changes and invokes `git rebase --continue` followed by `git-rlog`
