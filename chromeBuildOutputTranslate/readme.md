@@ -1,4 +1,4 @@
-# output transformations 
+# output transformations
 
 ## Intro
 
@@ -28,16 +28,40 @@ This serves 2 purposes:
 
 ## run.sh
 
-`run.sh` will simply pipe the output of running the built chrome executable to `translateRunColors.js` which will in turn style all output that is prefixed by a supported style name:
+`run.sh` will simply pipe the output of running the built chrome executable to `translateRunColors.js` which will in turn:
 
+1. style all output that is prefixed by a supported style name
+
+1. prefix line numbers
+
+1. remove less useful output (regex `/^\[\d+:\d+:\d+\/\d+\.\d+:.*$/`)
+
+supported colors:
+
+- `black`
 - `red`
+- `green`
+- `yellow`
 - `blue`
 - `pink`
+- `cyan`
 - `white`
+- `iblack`
 - `ired`
+- `igreen`
+- `iyellow`
 - `iblue`
 - `ipink`
+- `icyan`
 - `iwhite`
+- `lblack`
+- `lred`
+- `lgreen`
+- `lyellow`
+- `lblue`
+- `lpink`
+- `lcyan`
+- `lwhite`
 
 #### usage example
 
@@ -59,11 +83,19 @@ This serves 2 purposes:
 
 ![screenshot with transformation 2](./screenshots/run-transformed-2.png)
 
+#### normal 3
+
+![screenshot without transformation 3](./screenshots/run-untransformed-3.png)
+
+#### with transformations 3
+
+![screenshot with transformation 3](./screenshots/run-transformed-3.png)
+
 ## buildAndRun.sh
 
 does equivelent of `build.sh`, and, if successfull, then `run.sh`.
 
 ## terminal
 
-these scripts work fine in terminal as well. If you're primary use case is the terminal, you may want to modify `translatePaths.js` to output terminal-compatible links instead of ide-compatible links. Whereas ide's desire `/absolute/path/src/my_c_file.c:line#`, 
+these scripts work fine in terminal as well. If you're primary use case is the terminal, you may want to modify `translatePaths.js` to output terminal-compatible links instead of ide-compatible links. Whereas ide's desire `/absolute/path/src/my_c_file.c:line#`,
 terminals desire `file//...` with no appended line #
