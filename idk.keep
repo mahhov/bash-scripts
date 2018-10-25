@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+const {exec, execSync} = require('child_process');
+
+const execWrap = (command, sync) =>
+  sync ? execSync(command) : exec(command, {input: 'ignore', stdio: 'ignore'});
+
+const readline = require('readline');
+const chalk = require('chalk');
+
+let rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
+
+rl.on('line', line => {
+    let out = line
+        .replace(/^\.\.\/\.\.\/(\S*):/g, (_, file) => file)
+        .replace(/^.*\berror\b.*$/g, line => chalk`{bold ${line}}`)
+        .replace(/\berror\b/g, line => chalk`{red ${line}}`)
+        ;
+    console.log(out);
+})
