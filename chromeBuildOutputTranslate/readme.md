@@ -91,6 +91,14 @@ supported colors:
 
 ![screenshot with transformation 3](./screenshots/run-transformed-3.png)
 
+#### normal 4
+
+![screenshot without transformation 4](./screenshots/run-untransformed-4.png)
+
+#### with transformations 4
+
+![screenshot with transformation 4](./screenshots/run-transformed-4.png)
+
 ## buildAndRun.sh
 
 does equivelent of `build.sh`, and, if successfull, then `run.sh`.
