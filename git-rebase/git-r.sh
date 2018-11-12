@@ -1,10 +1,15 @@
+git-rsha() {
+  # print sha of current commit during rebase`
+  if [ -d ".git/rebase-apply" ]; then
+      cat .git/rebase-apply/original-commit
+  elif [ -d ".git/rebase-merge" ]; then
+      cat .git/rebase-merge/stopped-sha
+  fi
+}
+
 git-rst() {
     # print current commit during rebase, `<sha> <commit message>`
-    if [ -d ".git/rebase-apply" ]; then
-        git log --pretty=oneline --abbrev-commit -n1  `cat .git/rebase-apply/original-commit`
-    elif [ -d ".git/rebase-merge" ]; then
-        git log --pretty=oneline --abbrev-commit -n1  `cat .git/rebase-merge/stopped-sha`
-    fi
+    git log --pretty=oneline --abbrev-commit -n1  `git-rsha`
 }
 
 git-rlog() {
@@ -23,6 +28,12 @@ git-rcont() {
     git-rlog
 }
 
+git-rshow() {
+    git show `git-rsha`
+}
+
+alias git-rebase-sha='git-rsha'
 alias git-rebase-status='git-rst'
 alias git-rebase-log='git-rlog'
 alias git-rebase-continue='git-rcont'
+alias git-rebase-show='git-rshow'
