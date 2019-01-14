@@ -15,7 +15,7 @@ try {
 }
 
 const setClipboard = contents =>
-  childProcess.execSync(`echo '${contents}' | xclip -selection c -l 1`);
+  childProcess.execSync(`echo "${contents.replace(/(["`])/g, "\\$1")}" | xclip -selection c -l 1`);
 
 function* makeEnum() {
   let i = 0;
