@@ -62,8 +62,8 @@ let createCustomReview = numberAndTitle => {
 let createCustom = title => ({type: CUSTOM, title});
 
 let formatHeader = ({header}) => `${header}:`;
-let formatIssue = ({number, title}) => `- Issue [#${number}](https://crbug.com/${number}): ${title}`;
-let formatReview = ({number, title}) => `- Review [#${number}](https://chromium-review.googlesource.com/c/chromium/src/+/${number}): ${title}`;
+let formatIssue = ({number, title}) => `- Issue [#${number}](crbug.com/${number}): ${title}`;
+let formatReview = ({number, title}) => `- Review [#${number}](crrev.com/c/${number}): ${title}`;
 let formatCustom = ({title}) => `- ${title}`;
 
 Stream()
