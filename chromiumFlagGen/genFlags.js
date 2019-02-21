@@ -1,4 +1,8 @@
+#!/usr/bin/env node
+
 const readline = require('readline');
+
+const dir = `~/workspace/chromium/src`;
 
 let blue = text => '\033[1;34m' + text + '\033[0m'; // blue
 
@@ -47,14 +51,20 @@ let main = async () => {
   `;
 
   console.log();
-  console.log(blue('chrome/browser/about_flags.cc'));
+  console.log(blue('chrome/browser/about_flags.cc'), 'ordered contextually');
   console.log(aboutFlagsEntry);
-  console.log(blue('chrome/browser/flag_descriptions.h'));
+  console.log(blue('chrome/browser/flag_descriptions.h'), 'ordered alphabetically');
   console.log(flagDescriptionsHeaderEntry);
-  console.log(blue('chrome/browser/flag_descriptions.cc'));
+  console.log(blue('chrome/browser/flag_descriptions.cc'), 'ordered alphabetically');
   console.log(flagDescriptionsEntry);
-  console.log(blue('chrome/browser/flag-metadata.json'));
+  console.log(blue('chrome/browser/flag-metadata.json'), 'ordered contextually');
   console.log(flagMetadataJsonEntry);
+  console.log();
+
+  console.log('dont forget to run:');
+  console.log(blue('./genEnums.js'));
+  console.log('suggested commit command:');
+  console.log(blue(`cd ${dir}; git add . && git commit -m "flag for feature ${featureVariableName}"`));
 
   rl.close();
 };
