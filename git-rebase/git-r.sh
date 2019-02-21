@@ -20,6 +20,9 @@ git-rlog() {
     elif [ -d ".git/rebase-merge" ]; then
         git log --pretty=oneline --abbrev-commit `cat .git/rebase-merge/onto`^..`cat .git/rebase-merge/orig-head` | grep --color "`git-rst`\|"
     fi
+
+    echo ''
+    git diff --name-only --diff-filter=U
 }
 
 git-rcont() {
