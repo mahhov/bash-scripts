@@ -64,7 +64,7 @@ let main = async () => {
   console.log('dont forget to run:');
   console.log(blue('./genEnums.js'));
   console.log('suggested commit command:');
-  console.log(blue(`cd ${dir}; git add . && git commit -m "flag for feature ${featureVariableName}"`));
+  console.log(blue(`cd ${dir}; git cl format; git add . && git commit -m "flag for feature ${featureVariableName}"`));
 
   rl.close();
 };
