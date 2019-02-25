@@ -26,3 +26,4 @@ let cleanedTestOutput = testOutput.out.split('\n').filter(a => a.match('<int')).
 console.log(cleanedTestOutput.join('\n'));
 console.log('dont forget to run:');
 console.log(blue(`python ${dir}/tools/metrics/histograms/pretty_print.py`));
+console.log(blue(`python ${dir}/tools/metrics/histograms/validate_format.py`));
