@@ -23,6 +23,7 @@ let execTry = comomand => {
 
 let testOutput = execTry(cmd);
 let cleanedTestOutput = testOutput.out.split('\n').filter(a => a.match('<int')).map(a => a.trim());
+console.log(blue('tools/metrics/histograms/enums.xml'));
 console.log(cleanedTestOutput.join('\n'));
 console.log('dont forget to run:');
 console.log(blue(`python ${dir}/tools/metrics/histograms/pretty_print.py`));
