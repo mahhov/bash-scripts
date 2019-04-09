@@ -14,9 +14,9 @@ key ctrl+shift+p
 type 'filesystem'
 key Return
 file=`xsel -ob`
-if [[ file == *.java ]]; then
+if [[ $file == *.java ]]; then
   idea $file
 else
-  clionx $file
+  clion $file
 fi
 xdotool windowactivate --sync `xdotool search --name 'google3 \[\/google\/src'`
