@@ -1,0 +1,1 @@
+Generates CMake file for selected chromium directories. E.g. you can include only the 'chrome', 'components', and 'ui' directories as a starting point, and add other directories used often. Keeping the list of directories small will help IDE performance noticeably. The generated CMake is tested on CLion IDE.
